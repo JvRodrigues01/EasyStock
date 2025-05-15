@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using EasyStock.SharedKernel.Core.Base;
 using MediatR;
 
@@ -20,11 +21,8 @@ namespace EasyStock.Application.Commands.User
 
         [Required(ErrorMessage = "Telefone é obrigatório")]
         public string PhoneNumber { get; set; }
-
-        [Required(ErrorMessage = "Função é obrigatório")]
-        public Domain.User.Enums.UserRoleEnum Role { get; set; }
-
-        [Required(ErrorMessage = "Empresa é obrigatório")]
+        
+        [JsonIgnore]
         public Guid EnterpriseId { get; set; }
 
         [Required(ErrorMessage = "Cep é obrigatório")]

@@ -28,7 +28,7 @@ namespace EasyStock.Application.Commands.User
                 request.Email,
                 request.Password,
                 request.PhoneNumber,
-                request.Role,
+                Domain.User.Enums.UserRoleEnum.Collaborator,
                 request.EnterpriseId
             );
 

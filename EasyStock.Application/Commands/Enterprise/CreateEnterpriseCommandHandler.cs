@@ -13,6 +13,7 @@ namespace EasyStock.Application.Commands.User
         {
             _enterpriseRepository = enterpriseRepository;
         }
+
         public async Task<BaseResult<Guid>> Handle(CreateEnterpriseCommand request, CancellationToken cancellationToken)
         {
             var existingEnterprise = await _enterpriseRepository.GetByEmailAsync(request.Email);
