@@ -43,12 +43,6 @@ namespace EasyStock.Infrastructure.Mappings
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.Property(a => a.UserId)
-                .IsRequired(false);
-
-            builder.Property(a => a.EnterpriseId)
-                .IsRequired(false);
-
             builder.HasOne(a => a.User)
                 .WithOne(u => u.Address)
                 .HasForeignKey<User>(u => u.AddressId)

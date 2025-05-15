@@ -6,6 +6,7 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Reflection;
 using System.Text;
 using EasyStock.Domain.Jwt.Services;
+using EasyStock.Domain.User.Enums;
 
 namespace EasyStock.Api.Configuration
 {
@@ -31,6 +32,21 @@ namespace EasyStock.Api.Configuration
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
+            });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("SuperUserOnly", policy =>
+                    policy.RequireRole(UserRoleEnum.Superuser.ToString())
+                );
+
+                options.AddPolicy("AdminOnly", policy =>
+                    policy.RequireRole(UserRoleEnum.Admin.ToString())
+                );
+
+                options.AddPolicy("ManagerOnly", policy =>
+                    policy.RequireRole(UserRoleEnum.Manager.ToString())
+                );
             });
 
             return services;

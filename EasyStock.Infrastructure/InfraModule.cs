@@ -1,4 +1,7 @@
-﻿using EasyStock.Infrastructure.Context;
+﻿using EasyStock.Domain.Enterprise.Repositories;
+using EasyStock.Domain.User.Repositories;
+using EasyStock.Infrastructure.Context;
+using EasyStock.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +14,8 @@ namespace EasyStock.Infrastructure
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services
-                .AddDb(connectionString);
+                .AddDb(connectionString)
+                .AddRepositories();
 
             return services;
         }
@@ -22,6 +26,14 @@ namespace EasyStock.Infrastructure
             {
                 options.UseNpgsql(connectionString);
             });
+
+            return services;
+        }
+
+        private static IServiceCollection AddRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IEnterpriseRepository, EnterpriseRepository>();
 
             return services;
         }

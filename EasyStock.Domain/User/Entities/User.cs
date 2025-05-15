@@ -1,4 +1,5 @@
-﻿using EasyStock.Domain.User.Enums;
+﻿using EasyStock.Domain.Enterprise.Entities;
+using EasyStock.Domain.User.Enums;
 using EasyStock.SharedKernel.Core.Base;
 
 namespace EasyStock.Domain.User.Entities
@@ -6,7 +7,7 @@ namespace EasyStock.Domain.User.Entities
     public class User : EntityBase
     {
         public User(string firstName, string lastName, string email, string password,
-            string phoneNumber, UserRoleEnum role, Guid enterpriseId, Guid addressId)
+            string phoneNumber, UserRoleEnum role, Guid enterpriseId)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -15,7 +16,6 @@ namespace EasyStock.Domain.User.Entities
             PhoneNumber = phoneNumber;
             Role = role;
             EnterpriseId = enterpriseId;
-            AddressId = addressId;
 
             SetNewEntity();
         }
@@ -34,6 +34,16 @@ namespace EasyStock.Domain.User.Entities
         public void UpdatePasswordHash(string newPasswordHash)
         {
             Password = newPasswordHash;
+        }
+        public void SetAddress(Address.Entities.Address address)
+        {
+            Address = address;
+            AddressId = address.Id;
+        }
+        public void SetEnterprise(Enterprise.Entities.Enterprise enterprise)
+        {
+            Enterprise = enterprise;
+            EnterpriseId = enterprise.Id;
         }
     }
 }

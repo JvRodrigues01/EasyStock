@@ -28,8 +28,8 @@
         public void SetToActive() => Active = true;
         public void SetToInactive() => Active = false;
         public void SetActive(bool active) => Active = active;
-        public void SetCreatedDateToNow() => CreatedDate = DateTime.Now;
-        public void SetLastUpdateToNow() => LastUpdate = DateTime.Now;
+        public void SetCreatedDateToNow() => CreatedDate = DateTime.UtcNow;
+        public void SetLastUpdateToNow() => LastUpdate = DateTime.UtcNow;
         public void SetCreatedDate(DateTime createdDate) => CreatedDate = createdDate;
         public void SetLastUpdate(DateTime lastUpdate) => LastUpdate = lastUpdate;
 

@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EasyStock.Application\EasyStock.Application.csproj" />
     <ProjectReference Include="..\EasyStock.Domain\EasyStock.Domain.csproj" />
     <ProjectReference Include="..\EasyStock.Infrastructure\EasyStock.Infrastructure.csproj" />

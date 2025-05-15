@@ -32,7 +32,7 @@ namespace EasyStock.Infrastructure.Mappings
             builder.HasIndex(u => u.Email)
                 .IsUnique();
 
-            builder.Property(u => u.PhoneNumer)
+            builder.Property(u => u.PhoneNumber)
                 .IsRequired()
                 .HasMaxLength(14);
 
