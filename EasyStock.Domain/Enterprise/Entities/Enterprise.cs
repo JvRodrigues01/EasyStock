@@ -24,6 +24,7 @@ namespace EasyStock.Domain.Enterprise.Entities
         public Guid AddressId { get; private set; }
         public Address.Entities.Address Address { get; private set; }
         public IList<User.Entities.User> Users { get; private set; }
+        public IList<Product.Entities.Product> Products { get; private set; }
 
         public void SetAddress(Address.Entities.Address address)
         {
